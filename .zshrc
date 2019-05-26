@@ -15,8 +15,9 @@ antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
 
-# Syntax highlighting bundle.
+# Other bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
 
 # Load the theme.
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
