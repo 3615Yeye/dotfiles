@@ -1,0 +1,10 @@
+[alias]
+	st = status
+	l = log
+	lp = log -p
+	cm = commit -m
+	cam = commit -a -m
+	d = diff
+	dc = diff --cached
+	co = checkout
+	br = branch
