@@ -8,3 +8,5 @@
 	dc = diff --cached
 	co = checkout
 	br = branch
+[core]
+	excludesfile = ~/.gitignore_global
