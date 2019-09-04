@@ -16,6 +16,7 @@ alias bae='vim ~/.bash_aliases_env'
 
 # Bash functions
 mkcd() { mkdir "$1" && cd "$1"; }
+findx() { find . | xargs grep "$1" -sl; }
 
 # Not an alias, but define vim as the default editor (git...)
 export VISUAL=vim
