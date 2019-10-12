@@ -29,3 +29,6 @@ BULLETTRAIN_CONTEXT_DEFAULT_USER=ronan
 
 # Tell Antigen that you're done.
 antigen apply
+
+# Tmuxinator autocompletion
+source ~/.zsh/tmuxinator.zsh
