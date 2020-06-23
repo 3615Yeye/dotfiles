@@ -20,12 +20,11 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 
 # Load the theme.
-antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+antigen theme https://github.com/sbugzu/gruvbox-zsh
 
-# Bullet train theme customization
-BULLETTRAIN_NVM_FG=black
-BULLETTRAIN_DIR_FG=black
-BULLETTRAIN_CONTEXT_DEFAULT_USER=ronan
+# Gruvbox theme customization
+ZSH_THEME="gruvbox"
+SOLARIZED_THEME="dark"
 
 # Tell Antigen that you're done.
 antigen apply
