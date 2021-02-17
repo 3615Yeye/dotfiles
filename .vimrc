@@ -85,3 +85,28 @@ let g:ale_fixers = {
 let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
+
+"
+" Functions
+"
+"
+" Compute selected minutes and output time spent in HhM format
+function! TimeSpent()
+    let text = trim(GetTextSelection())
+    let hours = substitute(system("bc <<<'(" . text . ") / 60'"), '\n', '', 'g')
+    let minutes = substitute(system("bc <<<'(" . text . ") % 60'"), '\n', '', 'g')
+    call append(line('.'), ' => ' . hours . 'h' . minutes)
+    normal! J
+endfunction
+vnoremap <space>ct :call TimeSpent()<CR>
+
+" Get current visual text selection
+function! GetTextSelection()
+  try
+    let a_save = @a
+    normal! gv"ay
+    return @a
+  finally
+    let @a = a_save
+  endtry
+endfunction
