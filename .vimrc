@@ -6,12 +6,17 @@ Plug 'vim-airline/vim-airline' " Status line
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'morhetz/gruvbox' " Gruvbox colorscheme
 Plug 'posva/vim-vue' " VueJS single file components support
+Plug 'lumiliet/vim-twig' " Twig files support
 Plug 'mbbill/undotree' " Display the undo history as a tree
 Plug 'editorconfig/editorconfig-vim' " Make vim aware of .editorconfig files
 Plug 'tpope/vim-surround' " Quickly Change brackets, tags, quotes arround 
 Plug 'mattn/emmet-vim' " Improve web dev workflow, https://emmet.io/
 Plug 'ap/vim-css-color' " Display colored hex color codes
-Plug 'w0rp/ale' " Asynchronous syntax checker
+Plug 'dense-analysis/ale' " Asynchronous syntax checker
+Plug 'embear/vim-localvimrc' " Search for a .lvimrc file from current directory to root
+Plug 'vim-vdebug/vdebug' " Debugger
+Plug 'sheerun/vim-polyglot'
+Plug 'jwalton512/vim-blade'
 call plug#end()
 " Plugin config are defined near the end of this file
 
@@ -23,6 +28,7 @@ syntax on " Syntax coloration
 set tabpagemax=1000 " Moar tabs
 set ic " Insensitive case search (Warn : also active using the search & replace functionality)
 set incsearch " Tell vim to search while typing
+set hlsearch " Highlight all searched text
 set laststatus=2 " Keep status always on 
 set encoding=utf-8 " Open all files as utf-8
 set termguicolors " Tell vim to use as much colors as the terminal emulator support
@@ -30,6 +36,9 @@ set termguicolors " Tell vim to use as much colors as the terminal emulator supp
 set tabstop=4
 set shiftwidth=4
 set expandtab
+" Share clipboard with system (need a vim version with clipboard support)
+" Check it with this command : vim --version | grep .xterm_clipboard -o
+set clipboard=unnamedplus
 " Colorscheme settings
 set background=dark
 if filereadable( expand("$HOME/.vim/plugged/gruvbox/colors/gruvbox.vim") )
@@ -45,6 +54,8 @@ if has("persistent_undo")
     set undodir=~/.vim_undodir/
     set undofile
 endif
+
+"set mouse=a
 
 "
 " Keyboard shortcuts
@@ -67,15 +78,19 @@ nmap <space>gw :Gwrite<cr>
 "
 " Vim plugins configurations
 "
-
+ 
 " ALE conf
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-let g:ale_fixers = {
-\  'javascript': ['eslint'],
-\}
+let g:airline#extensions#ale#enabled = 1
+
+" Local vimrc
+let g:localvimrc_ask = 0 " Load vim local configuration without asking via prompt
+
+" Emmet trigger key
+let g:user_emmet_leader_key=','
 
 "
 " Special fixes

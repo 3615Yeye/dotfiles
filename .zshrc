@@ -7,6 +7,9 @@ if [ -f ~/.bash_aliases_env ]; then
     source ~/.bash_aliases_env
 fi
 
+# Increase history size
+SAVEHIST=100000
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -31,3 +34,10 @@ antigen apply
 
 # Tmuxinator autocompletion
 source ~/.zsh/tmuxinator.zsh
+
+# Vim keybindings
+bindkey -v
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

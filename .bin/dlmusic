@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Tell bash to stop the script if an error occur
+set -e
+
+if [ "$#" -lt 2 ]; then
+    echo 'This script need two parameters : '
+    echo '1) Youtube video URL'
+    echo '2) The song name (without .mp3)'
+    echo '3) Optional . to set current directory as artist name'
+    echo '4) Optional name of the genre'
+    echo '5) Optional 'video' to use the provided youtube URL as video source'
+    echo 'Example :'
+    echo 'dlmusic https://www.youtube.com/watch?v=dQw4w9WgXcQ "Best Song Ever"'
+    exit 1
+fi
+
+# Downloading song from Youtube to high quality opus
+echo "Downloading"
+youtube-dl --quiet -x --audio-quality 0 --audio-format vorbis -o song.ogg $1 
+
+# Converting from OPUS to MP3
+echo "Converting to mp3"
+if [ "$#" = 2 ]; then
+    ffmpeg -loglevel quiet -i song.ogg -ab 256k -f mp3 -id3v2_version 3 -metadata title="$2" "$2.mp3"
+elif [ "$#" = 3 ]; then
+    ffmpeg -loglevel quiet -i song.ogg -ab 256k -f mp3 -id3v2_version 3 -metadata title="$2" -metadata artist="${PWD##*/}" "$2.mp3"
+elif [[ "$#" = 4 || "$#" = 5 ]]; then
+    ffmpeg -loglevel quiet -i song.ogg -ab 256k -f mp3 -id3v2_version 3 -metadata title="$2" -metadata artist="${PWD##*/}" -metadata genre="$4" "$2.mp3"
+fi
+
+if [ "$5" = "video" ]; then
+    kid3-cli -c "select '$2.mp3'" -c "set WOAF $1" -c "save"
+fi
+
+# Cleaning tmp file
+rm song.ogg 
+
+echo "Enjoy ;)"
