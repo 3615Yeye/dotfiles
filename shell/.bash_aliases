@@ -6,6 +6,8 @@ alias llrt='ls -lrt'
 alias please='sudo'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
+alias vim="nvim"
+
 alias low='lowriter'
 alias lowro='lowriter --view'
 alias loc='localc'
@@ -21,6 +23,9 @@ alias dcr='docker-compose restart'
 alias dcb='docker-compose build'
 alias dcps='docker-compose ps'
 alias dcrun='docker-compose run --rm'
+
+alias fbr='git checkout $(git branch --all | fzf | tr -d "[:space:]")'
+alias fs='git stash apply $(git stash list | fzf| awk -F "[{}]" "{print \$2}")'
 
 # Bash functions
 mkcd() { mkdir "$1" && cd "$1"; }
