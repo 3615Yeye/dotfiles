@@ -31,11 +31,11 @@ alias fs='git stash apply $(git stash list | fzf| awk -F "[{}]" "{print \$2}")'
 mkcd() { mkdir "$1" && cd "$1"; }
 
 # Not an alias, but define vim as the default editor (git...)
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Loading an additionnal bash configuration if available in project root, combine well with tmuxinator
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 BASH_OVERRIDE="${DIR}/.bash_override"
-if [ -f $BASH_OVERRIDE ]; then . $BASH_OVERRIDE ; fi
-export PATH=$PATH:$HOME/.bin
+if [ -f $BASH_OVERRIDE ]; then . $BASH_OVERRIDE; fi
+export PATH=$PATH:~/.bin:~/.bin-not-versioned:~/tizen-studio/tools

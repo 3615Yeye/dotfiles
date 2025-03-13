@@ -10,3 +10,13 @@
 	br = branch
 [core]
 	excludesfile = ~/.gitignore_global
+[user]
+	email = rlepivaingt@dotscreen.com
+	name = Ronan Le Pivaingt
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main

@@ -17,7 +17,8 @@ fi
 
 # Downloading song from Youtube to high quality opus
 echo "Downloading"
-youtube-dl --quiet -x --audio-quality 0 --audio-format vorbis -o song.ogg $1 
+# youtube-dl --quiet -x --audio-quality 0 --audio-format vorbis -o song.ogg $1 
+yt-dlp --quiet -x --audio-quality 0 --audio-format vorbis -o song $1 
 
 # Converting from OPUS to MP3
 echo "Converting to mp3"
