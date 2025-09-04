@@ -38,4 +38,4 @@ export EDITOR="$VISUAL"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 BASH_OVERRIDE="${DIR}/.bash_override"
 if [ -f $BASH_OVERRIDE ]; then . $BASH_OVERRIDE; fi
-export PATH=$PATH:~/.bin:~/.bin-not-versioned:~/tizen-studio/tools
+export PATH=$PATH:~/.bin:~/.bin-not-versioned/nvim/bin:~/tizen-studio/tools:~/.cargo/bin

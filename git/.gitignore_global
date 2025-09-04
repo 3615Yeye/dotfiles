@@ -1,3 +1,6 @@
 .*.swp
 .bash_override
 .scripts
+.crush
+CRUSH.md
+CLAUDE.md

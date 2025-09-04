@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get the environment variables
+env_vars=$(printenv | grep ^XDG | column -t -s '=')
+
+# Print the header
+echo "+---------------------------+-----------------------------------------------+"
+echo "| Variable                  | Value                                         |"
+echo "+---------------------------+-----------------------------------------------+"
+
+# Print each environment variable in the bordered format
+while IFS= read -r line; do
+	printf "| %-25s | %-45s |\n" $line
+done <<<"$env_vars"
+
+# Print the footer
+echo "+---------------------------+-----------------------------------------------+"
